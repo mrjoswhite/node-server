@@ -4,19 +4,28 @@ const listaDeTareas = [
     { indicador: 3, descripción: 'Salir a correr', estado: 'pendiente' }
   ];
   function añadirTarea(indicador, descripción, estado) {
-    listaDeTareas.push({ indicador, descripción, estado });
+    return new Promise((resolve, reject) => {
+      listaDeTareas.push({ indicador, descripción, estado });
+      resolve();
+    });
   }
   
   function eliminarTarea(indicador) {
-    listaDeTareas = listaDeTareas.filter(tarea => tarea.indicador !== indicador);
+    return new Promise((resolve, reject) => {
+      listaDeTareas = listaDeTareas.filter(tarea => tarea.indicador !== indicador);
+      resolve();
+    });
   }
   
   function completarTarea(indicador) {
-    listaDeTareas.forEach(tarea => {
-      if (tarea.indicador === indicador) {
-        tarea.estado = 'completada';
-      }
+    return new Promise((resolve, reject) => {
+      listaDeTareas.forEach(tarea => {
+        if (tarea.indicador === indicador) {
+          tarea.estado = 'completada';
+        }
+      });
+      resolve();
     });
   }
-  añadirTarea(4, 'Lavar los platos', 'pendiente');
-   
+  
+  
