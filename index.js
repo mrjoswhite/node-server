@@ -27,5 +27,13 @@ const listaDeTareas = [
       resolve();
     });
   }
+  async function executeTasks() {
+    await añadirTarea(4, 'Lavar los platos', 'pendiente');
+    await eliminarTarea(2);
+    await completarTarea(1);
+    console.log(listaDeTareas);
+  }
+  
+  executeTasks();
   
   
